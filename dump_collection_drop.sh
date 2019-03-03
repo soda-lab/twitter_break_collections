@@ -35,6 +35,6 @@ done
 for i in ${array[@]}; do
 
   echo "ready to dump collection '$i'"
-  mongodump --archive=mongodb_$i.gz --gzip --db Twitter -c $i && mongo $IP:$(($Port))/Twitter --eval "db['$i'].drop()" && echo "collection '$i' done: already dumped and droped from database"
+  mongodump --archive=mongodb_$i.gz --gzip --host $IP --port $Port --db Twitter -c $i && mongo $IP:$(($Port))/Twitter --eval "db['$i'].drop()" && echo "collection '$i' done: already dumped and droped from database"
 
 done
